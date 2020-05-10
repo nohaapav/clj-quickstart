@@ -1,10 +1,12 @@
-# cljs.web-template
+# Web
 
-A ClojureScript cljs.web template 
+A ClojureScript web template with:
+ 
+* reitit routing
+* rum
+* devtools
 
-## Usage
-
-FIXME
+in place.
 
 ## License
 
