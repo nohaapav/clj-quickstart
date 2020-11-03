@@ -1,16 +1,14 @@
-# Web
+# clj-quickstart
 
-A ClojureScript web template with:
+A set of ready-to-use clojure templates for quick DEV kickoff.
  
-* reitit routing
-* rum
-* devtools
-
-in place.
+* **web** - Web application (FE)
+* **server** - Web application server (BE)
+* **bundle** - Web application server serving web app (FE + BE)
 
 ## License
 
-Copyright © 2020 FIXME
+Copyright © 2020
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License 2.0 which is available at
