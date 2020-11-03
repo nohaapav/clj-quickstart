@@ -18,9 +18,7 @@
   :ring {:handler app.server/app}
   :repl-options {:init-ns repl.user}
 
-  :profiles {:dev     {:dependencies [[javax.servlet/servlet-api "2.5"]
-                                      [ring/ring-mock "0.3.0"]]
-                       :source-paths ["src" "dev"]}
+  :profiles {:dev     {:source-paths ["src" "dev"]}
              :prod    {:source-paths ["src"]
                        :prep-tasks   ["javac" "compile"]
                        :omit-source  true
