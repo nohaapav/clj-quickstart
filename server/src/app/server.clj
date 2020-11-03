@@ -1,45 +1,49 @@
 (ns app.server
   (:gen-class)
-  (:require [ring.middleware.json :refer [wrap-json-params wrap-json-response]]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+  (:require [clojure.tools.logging :as log]
             [org.httpkit.server :refer [run-server]]
-            [clojure.tools.logging :as log]
-            [clojure.tools.nrepl.server :as nrepl]
             [reitit.ring :as ring]
             [reitit.coercion.spec]
             [reitit.dev.pretty :as pretty]
-            [reitit.ring.spec :as rrs]
             [reitit.ring.coercion :as coercion]
             [reitit.ring.middleware.muuntaja :as muuntaja]
             [reitit.ring.middleware.exception :as exception]
             [reitit.ring.middleware.parameters :as parameters]
-            [reitit.spec :as rs]
-            [expound.alpha :as e]
+            [reitit.ring.middleware.multipart :as multipart]
             [muuntaja.core :as m]
             [app.routes :as routes]))
-
-(def app-middleware
-  [;; negotiation, request decoding and response encoding
-   muuntaja/format-middleware
-   ;; query-params & form-params
-   parameters/parameters-middleware
-   ;; exception handling
-   exception/default-handlers
-   ;; coercing response body (disabled)
-   coercion/coerce-response-middleware
-   ;; coercing request parameters
-   coercion/coerce-request-middleware])
 
 (def app
   (ring/ring-handler
     (ring/router
       routes/api
-      {:exception   pretty/exception
-       :validate    rrs/validate
-       ::rs/explain e/expound-str
-       :conflicts   nil
-       :data        {:coercion   reitit.coercion.spec/coercion
-                     :muuntaja   m/instance
-                     :middleware app-middleware}})
-    (-> (ring/create-default-handler)
-        (wrap-defaults site-defaults))))
+      {;;:reitit.middleware/transform dev/print-request-diffs ;; pretty diffs
+       ;;:validate spec/validate ;; enable spec validation for route data
+       ;;:reitit.spec/wrap spell/closed ;; strict top-level validation
+       :exception pretty/exception
+       :data {:coercion reitit.coercion.spec/coercion
+              :muuntaja m/instance
+              :middleware [;; query-params & form-params
+                           parameters/parameters-middleware
+                           ;; content-negotiation
+                           muuntaja/format-negotiate-middleware
+                           ;; encoding response body
+                           muuntaja/format-response-middleware
+                           ;; exception handling
+                           exception/exception-middleware
+                           ;; decoding request body
+                           muuntaja/format-request-middleware
+                           ;; coercing response bodys
+                           coercion/coerce-response-middleware
+                           ;; coercing request parameters
+                           coercion/coerce-request-middleware
+                           ;; multipart
+                           multipart/multipart-middleware]}})
+    (ring/routes
+      (ring/create-default-handler))))
+
+(defn -main [& [port]]
+  (log/info "App is starting...")
+  (let [port (or port 8080)]
+    (run-server app {:port port} :thread 8 :queue-size 300000)
+    (log/info "App is running on port" port)))

@@ -1,5 +1,6 @@
 (ns repl.user
-  (:require [clojure.tools.nrepl.server :as nrepl]))
+  (:require [app.server :as server]
+            [ring.adapter.jetty :as jetty]))
 
 ;; Let Clojure warn you when it needs to reflect on types, or when it does math
 ;; on unboxed numbers. In both cases you should add type annotations to prevent
@@ -7,7 +8,5 @@
 (set! *warn-on-reflection* true)
 (set! *unchecked-math* :warn-on-boxed)
 
-(defn nrepl-start
-  "This start web server for the app on port 7888."
-  []
-  (nrepl/start-server :port 7888))
+(defn start-ring-server []
+  (jetty/run-jetty server/app {:port 3000, :join? false}))
