@@ -4,7 +4,7 @@ A set of ready-to-use clojure templates for quick DEV kickoff.
  
 * **web** - Web application (FE)
 * **server** - Web application server (BE)
-* **bundle** - Web application server serving web app (FE + BE)
+* **bundle** - Web application server serving web app (FE + BE) TBD
 
 ## Setting up a development environment
 
@@ -23,10 +23,7 @@ Start a REPL session
 lein repl
 ```
 
-and call function `(fig-start)`, which will start the figwheel server and watch based auto-compiler. App is served on http://localhost:3449
-
-In order to use REPL on frontend side call additionally `(cljs-repl)`. Both `(fig-start)` & `(cljs-repl)` are
-part of dev **repl.user** namespace.
+For the REPL development follow dev **repl.user** namespace which is part of every subproject.
 
 ## License
 
