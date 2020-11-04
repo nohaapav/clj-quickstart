@@ -2,9 +2,9 @@
 
 A set of ready-to-use clojure templates for quick DEV kickoff.
  
-* **web** - Website (FE)
+* **web** - React app (FE)
 * **server** - Web application server (BE)
-* **bundle** - Web application server serving static website (FE + BE) TBD
+* **bundle** - Web application server serving react app (FE + BE)
 
 ## Setting up a development environment
 
