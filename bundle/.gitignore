@@ -2,8 +2,8 @@
 *.jar
 !/repo/**/*.jar
 /.lein-*
-/.cljs_rhino_repl/
 /.nrepl-port
+/.rebel_readline_history
 /.repl
 /checkouts/
 /classes/

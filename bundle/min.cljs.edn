@@ -1,0 +1,10 @@
+{:main                 webapp.app
+ :asset-path           "/js/out"
+ :output-to            "resources/public/js/webapp.js"
+ :output-dir           "target"
+ :parallel-build       true
+ :source-map-timestamp true
+ :optimizations        :advanced
+ :closure-defines      {"goog.DEBUG" false}
+ :pretty-print         false
+ :pseudo-names         false}

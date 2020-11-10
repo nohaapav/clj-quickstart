@@ -1,0 +1,4 @@
+{:watch-dirs       ["src/cljs" "src/cljc"]
+ :css-dirs         ["resources/public/css"]
+ :reload-clj-files #{:cljc}
+ :ring-handler     repl.user/http-handler}
