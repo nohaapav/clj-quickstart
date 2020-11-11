@@ -25,7 +25,7 @@ Start a REPL session
 lein repl
 ```
 
-For the REPL development follow dev **repl.user** namespace which is part of every subproject.
+For the REPL development follow dev **repl.user** namespace instructions. Namespace is loaded into session on startup.
 
 ## License
 
