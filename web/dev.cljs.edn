@@ -1,0 +1,10 @@
+{:main           web.app
+ :preloads       [devtools.preload]
+ :asset-path     "/js/out"
+ :output-to      "resources/public/js/web.js"
+ :output-dir     "resources/public/js/out"
+ :aot-cache      true
+ :infer-externs  true
+ :parallel-build true
+ :compiler-stats true
+ :source-map     true}
