@@ -4,7 +4,7 @@
   :license {:name "EPL-2.0"
             :url  "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.0"]
-                 [org.clojure/clojurescript "1.10.597"]
+                 [org.clojure/clojurescript "1.10.773"]
                  [org.clojure/core.async "1.3.610"]
                  [cljsjs/react "16.8.6-0"]
                  [cljsjs/react-dom "16.8.6-0"]
