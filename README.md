@@ -6,6 +6,8 @@ A set of ready-to-use clojure quickstarts for DEV kickoff.
 * **server** - Web application server (BE)
 * **bundle** - Web application server serving react app (FE + BE)
 
+For NPM support visit figwheel offical [documentation](https://figwheel.org/docs/npm.html).
+
 ## Setting up a development environment
 
 Prerequisites
