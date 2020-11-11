@@ -32,16 +32,12 @@
 
   :plugins [[lein-shell "0.5.0"]]
 
-  :aliases {"fig"      ["trampoline" "run" "-m" "figwheel.main"]
-            "fig:dev"  ["trampoline" "run" "-m" "figwheel.main" "-b" "dev" "-r"]
-            "fig:min"  ["run" "-m" "figwheel.main" "-O" "advanced" "-co" "min.cljs.edn" "-c"]
-            "clean!"   ["do"
-                        ["shell" "rm" "-rf" "target"]
-                        ["shell" "rm" "-rf" "resources/public/js/out"]
-                        ["shell" "rm" "resources/public/js/webapp.js"]]
-            "release!" ["do"
-                        ["fig:min"]
-                        ["uberjar"]]}
+  :aliases {"fig"         ["trampoline" "run" "-m" "figwheel.main"]
+            "fig:dev"     ["trampoline" "run" "-m" "figwheel.main" "-b" "dev" "-r"]
+            "cljs-clean!" ["do"
+                           ["shell" "rm" "-rf" "resources/public/js/out"]
+                           ["shell" "rm" "-rf" "resources/public/js/webapp.js"]]
+            "cljs-build!" ["run" "-m" "figwheel.main" "-O" "advanced" "-co" "min.cljs.edn" "-c"]}
 
   :profiles {:dev     {:dependencies [[com.bhauman/figwheel-main "0.2.12"]
                                       [com.bhauman/rebel-readline-cljs "0.1.4"]
