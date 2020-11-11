@@ -1,6 +1,6 @@
 # clj-quickstart
 
-A set of ready-to-use clojure templates for quick DEV kickoff.
+A set of ready-to-use clojure quickstarts for DEV kickoff.
  
 * **web** - React app (FE)
 * **server** - Web application server (BE)
